@@ -1,0 +1,8 @@
+html, body, #root { height: 100%; }
+body { margin: 0; background: #fff; color: #111; font-family: Arial, sans-serif; }
+
+/* (Optional: your Tailwind can go below if you use it)
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
