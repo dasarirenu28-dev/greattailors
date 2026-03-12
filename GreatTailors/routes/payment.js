@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const PDFDocument = require("pdfkit");
 
 const Payment = require("../module/payment");
-const Order = require("../module/Order_old");
+const Order = require("../models/order");
 
 const router = express.Router();
 

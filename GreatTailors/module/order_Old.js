@@ -1,21 +1,32 @@
-// module/Order.js
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const itemSchema = new mongoose.Schema({
-  name: { type: String },
-  service: { type: String },
-  quantity: { type: Number, default: 1 },
-  price: { type: Number, default: 0 },
-
-  // ⭐ REQUIRED FOR POPULATE
-  worker: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Worker",
-    default: null,
+/* ========== EMBEDDED PAYMENTS (ORDER HISTORY) ========== */
+const EmbeddedPaymentSchema = new mongoose.Schema(
+  {
+    amount: { type: Number, required: true },
+    method: { type: String, default: "CASH" },
+    createdAt: { type: Date, default: Date.now },
   },
-});
+  { _id: false }
+);
 
-const orderSchema = new mongoose.Schema(
+/* ========== ITEMS ========== */
+const ItemSchema = new mongoose.Schema(
+  {
+    itemName: { type: String, required: true },
+    service: {
+      type: String,
+      enum: ["Alteration", "New"],
+      required: true,
+    },
+    quantity: { type: Number, default: 1 },
+    price: { type: Number, default: 0 },
+  },
+  { _id: false }
+);
+
+/* ========== ORDER ========== */
+const OrderSchema = new mongoose.Schema(
   {
     customerId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -23,20 +34,42 @@ const orderSchema = new mongoose.Schema(
       required: true,
     },
 
-    items: [itemSchema],
+    orderId: String,
 
-    totalAmount: { type: Number, default: 0 },
-    dueDate: Date,
+    items: {
+      type: [ItemSchema],
+      default: [],
+    },
 
-    orderNumber: String,
-    paymentStatus: { type: String, default: "Unpaid" },
-    deliveryStatus: { type: String, default: "Pending" },
+    totalAmount: {
+      type: Number,
+      default: 0,
+    },
+
+    advancePaid: {
+      type: Number,
+      default: 0,
+    },
+
+    payments: {
+      type: [EmbeddedPaymentSchema],
+      default: [],
+    },
+
+    paymentStatus: {
+      type: String,
+      enum: ["Pending", "Partial", "Paid"],
+      default: "Pending",
+    },
 
     paymentMethod: { type: String, default: "CASH" },
+    deliveryStatus: { type: String, default: "Pending" },
+    workerStatus: { type: String, default: "Pending" },
+
+    deliveryDate: Date,
   },
   { timestamps: true }
 );
 
-// FIX overwrite error
-export default mongoose.models.Order ||
-  mongoose.model("Order", orderSchema);
+module.exports =
+  mongoose.models.Order || mongoose.model("Order", OrderSchema);
