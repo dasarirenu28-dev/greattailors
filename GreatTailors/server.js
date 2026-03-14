@@ -33,7 +33,7 @@ mongoose
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
 // Routes
-
+console.log("test push");
 console.log("authRoutes:", typeof authRoutes);
 console.log("customerRoutes:", typeof customerRoutes);
 console.log("orderRoutes:", typeof orderRoutes);
