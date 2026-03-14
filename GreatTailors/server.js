@@ -6,6 +6,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 //require("dotenv").config();
 require("dotenv").config({ path: "./.env" });
+console.log("ENV CHECK:", process.env.MONGO_URI);
 // Import Routes (CHECK SPELLING!)
 const customerRoutes = require("./routes/customer");
 const orderRoutes = require("./routes/order");
