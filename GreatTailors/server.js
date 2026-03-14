@@ -4,8 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
-require("dotenv").config();
-
+//require("dotenv").config();
+require("dotenv").config({ path: "./.env" });
 // Import Routes (CHECK SPELLING!)
 const customerRoutes = require("./routes/customer");
 const orderRoutes = require("./routes/order");
