@@ -6,7 +6,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 require("dotenv").config();
 
-
 // Import Routes (CHECK SPELLING!)
 const customerRoutes = require("./routes/customer");
 const orderRoutes = require("./routes/order");
@@ -21,6 +20,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
+
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
