@@ -1,4 +1,4 @@
-import Worker from "../models/worker.js";
+import Worker from "../module/worker.js";
 import Order from "../models/order.js";
 
 /* ======================================================
