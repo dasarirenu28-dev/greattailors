@@ -4,8 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
-//require("dotenv").config();
-require("dotenv").config({ path: "./.env" });
+require("dotenv").config();
+//require("dotenv").config({ path: "./.env" });
 // Import Routes (CHECK SPELLING!)
 const customerRoutes = require("./routes/customer");
 const orderRoutes = require("./routes/order");
@@ -26,10 +26,9 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose
-  .connect(console.log("MONGO_URI:", process.env.MONGO_URI))
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+  .catch(err => console.log("❌ MongoDB Connection Error:", err));
 
 // Routes
 console.log("test push");
