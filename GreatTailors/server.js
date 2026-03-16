@@ -27,8 +27,17 @@ app.use(express.json());
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => console.log("❌ MongoDB Connection Error:", err));
+.then(() => {
+    console.log("✅ MongoDB Connected");
+
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
+    });
+
+})
+.catch(err => {
+    console.log("❌ MongoDB Connection Error:", err);
+});
 
 // Routes
 console.log("test push");
