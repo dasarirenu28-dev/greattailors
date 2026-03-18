@@ -28,7 +28,7 @@ export default function CustomersPage() {
     try {
       setLoading(true);
       setErr("");
-      const res = await axios.get("http://localhost:5000/customer", {
+      const res = await axios.get("https://greattailors-backend.onrender.com/customer", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCustomers(Array.isArray(res.data) ? res.data : []);
@@ -45,7 +45,7 @@ export default function CustomersPage() {
     try {
       setErr("");
       await axios.post(
-        "http://localhost:5000/customer",
+        "https://greattailors-backend.onrender.com/customer",
         { name, phone, measurement, orderId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
