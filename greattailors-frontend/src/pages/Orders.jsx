@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:5000";
+const API_BASE = process.env.REACT_APP_API_BASE || "https://greattailors-backend.onrender.com/orders";
 
 /* Services */
 const SERVICES = ["Alteration", "New"];

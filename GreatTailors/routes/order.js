@@ -33,7 +33,7 @@ router.get("/", async (_req, res) => {
 
     res.json(orders);
   } catch (err) {
-    console.error("GET /orders ERROR:", err);
+    console.error("GET /order ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -69,7 +69,7 @@ router.post("/", async (req, res) => {
 
     res.json(order);
   } catch (err) {
-    console.error("POST /orders ERROR:", err);
+    console.error("POST /order ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -147,7 +147,7 @@ router.patch("/:id", async (req, res) => {
 
     res.json(updated);
   } catch (err) {
-    console.error("PATCH /orders ERROR:", err);
+    console.error("PATCH /order ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 });

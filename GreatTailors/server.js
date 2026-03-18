@@ -7,7 +7,7 @@ const helmet = require("helmet");
 require("dotenv").config({ quiet: true });
 //require("dotenv").config({ path: "./.env" });
 // Import Routes (CHECK SPELLING!)
-const customerRoutes = require("./routes/customer");
+const customerRoutes = require("./routes/customers");
 const orderRoutes = require("./routes/order");
 const paymentRoutes = require("./routes/payment");
 const dashboardRoutes = require("./routes/dashboard");
