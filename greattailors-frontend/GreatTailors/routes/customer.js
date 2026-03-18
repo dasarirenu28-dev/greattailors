@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
 });
 
 // Get all customers
-/*router.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // return orders array as stored (not populated)
     const customers = await Customer.find().sort({ createdAt: -1 }).lean();
@@ -39,16 +39,7 @@ router.post("/", async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
-*/
-router.get("/", async (req, res) => {
-  try {
-    const customers = await Customer.find().lean();
-    res.json(customers);
-  } catch (err) {
-    console.error("customers.get error:", err);
-    res.status(500).json({ error: err.message });
-  }
-});
+
 // Get single customer (populate orders.orderId -> Order.number)
 router.get("/:id", async (req, res) => {
   try {

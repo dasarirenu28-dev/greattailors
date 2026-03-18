@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const API =
-  process.env.REACT_APP_API_BASE || "https://greattailors-backend.onrender.com/vendors";
+  process.env.REACT_APP_API_BASE || "http://localhost:5000";
 
 export default function Vendors() {
   const [vendors, setVendors] = useState([]);
