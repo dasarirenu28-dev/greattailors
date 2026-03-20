@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const API =
-  process.env.REACT_APP_API_BASE || "https://greattailors-backend.onrender.com/warehouse-purchases";
+  process.env.REACT_APP_API_BASE || "https://greattailors-backend.onrender.com";
 
 const PAYMENT_METHODS = ["CASH", "BANK", "UPI", "CARD"];
 
